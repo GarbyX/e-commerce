@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=" 1.0>
+	<meta http-equiv="X-UA-Compatible" content="">
+
+	<link rel="stylesheet" href="style.css">
+	<title> Les Deux Online Store &reg </title>	
+
+</head>
+
+<body>
+	<div>
+	<figure align="center">
+		<img class="hdr" src="Imgs/Les Deux Online Stores inset.png" alt="Les Deux Official Banner"
+			title="Les Deux Official Banner&reg" align="center">
+	</figure>
+	</div>
+
+	<div>
+		<h2> E-commerce Section </h2>
+	</div>
+
+	<table align="center">
+
+		<tr>
+			<th> Product </th>
+			<th> Manufacturer </th>
+			<th> Current Price</th>
+			<th> Select </th>
+		</tr>
+
+		<!-- 2nd column: TVs -->
+
+		<tr class="odd">
+			<td class="main">
+				<!--width="10℅" -->
+				<figure>
+					<img src="Imgs/Samsung 40-Inch FHD LED TV - Black.jpg" align="left"
+						alt="Samsung &reg 40-Inch FHD LED TV N5000 - Black + 1 Year Official Warranty"
+						title=" Samsung &reg 40-Inch FHD LED TV N5000 - Black + 1 Year Official Warranty">
+					<figcaption> Samsung&reg 40-Inch FHD LED TV N5000 - Black </figcaption>
+				</figure>
+			</td>
+			<td> Samsung </td>
+			<td> N110,000 </td>
+			<td>
+				<input type="checkbox" id="tv" name="" value="110000" onclick="picktv()" />
+			</td>
+		</tr>
+
+		<!-- 3rd column: Woofers -->
+
+		<tr class="even">
+			<td>
+				<figure>
+					<img src="Imgs/Djack 51CH Home Theater DJ-J5L Long Speaker With DVD Player.jpg"
+						alt="Djack 5.1CH Home Theater DJ-J5L Long Speaker With DVD Player "
+						title="Djack 5.1CH Home Theater DJ-J5L Long Speaker With DVD Player">
+					<figcaption align="center"> Djack&reg 5.1CH Home Theater DJ-J5L Long Speaker </figcaption>
+				</figure>
+			</td>
+			<td> Djack </td>
+			<td> N75,000 </td>
+			<td>
+				<input type="checkbox" id="wf" name="" value=75000 onclick="pickwf()" />
+			</td>
+		</tr>
+
+		<!-- 4th column: Flash drives -->
+
+		<tr class="odd">
+			<td>
+				<figure>
+					<img src="Imgs/Flash drive 5.jpg " alt="Flash drive LD-009H" title="Flash drive LD-009H">
+					<figcaption align="center"> Les Deux&reg 64gb Flash Drive [LD-009H] </figcaption>
+				</figure>
+			</td>
+			<td> Les Deux </td>
+			<td> N12,000 </td>
+			<td>
+				<input type="checkbox" id="fl" name="" value=12000 onclick="pickfl()" />
+			</td>
+		</tr>
+
+		<!-- 5th column: total -->
+
+		<tr class="btm">
+			<td>	</td>
+			<td>	</td>
+			<td> N<Label for="Total Purchase" id="total2">0</Label>
+				<!-- <input type="text" id="total0" value="0" />0<br/>
+				<input type="text" id="total01" value="0" disabled />0<br/> -->
+			</td>
+			<td> TOTAL </td>
+		</tr>
+
+	</table>
+	<br><br>
+	<hr><br>
+
+	<p> All rights reserved <sup>&reg</sup> 2020 Les Deux.com </p>
+
+	<br> <br>
+
+	<script>
+		function picktv() {
+
+			// First get the element for each item and that of the total sum 
+
+			var tv_tickedElt = document.getElementById("tv");                        // get id of tv item
+
+			var total2Elt = document.getElementById("total2");                 // get id of total purchase		
+			var total2 = total2Elt.innerText;                                // get the current written text (assigned zero before selection)
+				total2 = parseFloat(total2);                                   // convert to a real number
+
+			// if (tv_ticked.checked == false)
+			if (tv_tickedElt.checked == true)
+			{
+            // alert("Select item to add to cart");
+			alert("Samsung® 40-Inch FHD LED TV N5000 (Black) added to cart.");
+			total2 = total2 + 110000;                                          // i.e. 0 + price of tv (on 1st click)			
+            }
+			else {
+				alert("Samsung® 40-Inch FHD LED TV N5000 (Black) removed from cart.");    
+				total2 = total2 - 110000;                           // Total - tv price when unchecked: to avoid erroneous "repititive addition"
+			
+			// var tv = parseFloat(document.getElementById("tv").value);
+			// var wf = parseFloat(document.getElementById("wf").value);
+			// var fl = parseFloat(document.getElementById("fl").value);
+
+			//    if (tv_ticked.checked == true || wf.checked == true || (fl.checked == true))
+			//     {
+			// 		var ans = (tv + wf + fl);
+			}
+			total2Elt.innerText = total2;		
+		}
+
+		function pickwf() {
+
+			var wf_tickedElt = document.getElementById("wf");                        // get id of woofer
+
+			var total2Elt = document.getElementById("total2");                       // get id of total purchase 
+			var total2 = parseFloat(total2Elt.innerText);                            // get the current total (defaults to zero before selection)
+
+			if (wf_tickedElt.checked == true)
+			{
+				alert("Djack® 5.1CH Home Theater DJ-J5L Long Speaker added to cart.");
+				total2 = total2 + 75000;                                // i.e. 0 + price of tv (on 1st click)			
+			}
+			else {
+				alert("Djack® 5.1CH Home Theater DJ-J5L Long Speaker removed from cart.");    
+				total2 = total2 - 75000;                          		// Total - tv price (when unchecked: to avoid erroneous "repititive addition")
+			}
+			total2Elt.innerText = total2;		                   		 // sends the updated total/sum back to the website to inform user.
+		}
+
+
+		function pickfl() {
+
+			var fl_tickedElt = document.getElementById("fl");                        // get id of woofer
+
+			var total2Elt = document.getElementById("total2");                       // get id of total purchase 
+			var total2 = parseFloat(total2Elt.innerText);                            // get the current total (defaults to zero before selection)
+
+			if (fl_tickedElt.checked == true)
+			{
+				alert("Les Deux® 64gb Flash Drive [LD-009H] to added to cart.");
+				total2 = total2 + 12000;                                // i.e. 0 + price of tv (on 1st click)			
+			}
+			else {
+				alert("Les Deux® 64gb Flash Drive [LD-009H] removed from cart.");    
+				total2 = total2 - 12000;                          		// Total - tv price (when unchecked: to avoid erroneous "repititive addition")
+			}
+			total2Elt.innerText = total2;		                   		 // sends the updated total/sum back to the website to inform user.
+		}
+	</script>
+
+</body>
+</html>
